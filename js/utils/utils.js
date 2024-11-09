@@ -1,4 +1,4 @@
-import { leaderboardlist, endGame, leaderBoard } from "../elements.js";
+import { leaderboardlist, endGame, leaderBoard, MenuContainer } from "../elements.js";
 
 function checkArrays(array1, array2) {
     for (let i = 0; i < array1.length; i++) {
@@ -105,22 +105,39 @@ const addLeaderboardItem = (newItem) => {
 
 }
 
+const HideLeaderBoard = () => {
+    leaderBoard.style.display = 'none';
+    MenuContainer.style.display = "flex";
+}
+
+
 const ShowLeaderBoard = () => {
     HideGameOverScreen();
     leaderBoard.style.display = 'flex';
     leaderboardlist.innerHTML = '';
+
     const allKeys = Object.keys(localStorage);
     const allItems = [];
 
     allKeys.forEach(key => {
-        allItems.push(key)
+        const timeString = JSON.parse(localStorage.getItem(key)); // Parse the stringified time
+        const timeInSeconds = convertToSeconds(timeString); // Convert "MM:SS" to total seconds
+        allItems.push({ name: key, timeString: timeString, timeInSeconds: timeInSeconds });
     });
 
-    for (const key in allItems) {
-        addLeaderboardItem(`${allItems[key]}  ${localStorage.getItem(allItems[key]).replace(/"/g, '')}s`)
-    }
-}
+    allItems.sort((a, b) => a.timeInSeconds - b.timeInSeconds);
 
+    const topItems = allItems.slice(0, 4);
+
+    topItems.forEach(item => {
+        addLeaderboardItem(`${item.name}  ${item.timeString}`);
+    });
+};
+
+const convertToSeconds = (timeString) => {
+    const [minutes, seconds] = timeString.split(':').map(Number);
+    return minutes * 60 + seconds;
+};
 const ShowGameOverScreen = () => {
     endGame.style.display = "flex";
     endGame.style.opacity = "1";
@@ -138,4 +155,5 @@ export {
     ShowGameOverScreen,
     HideGameOverScreen,
     ShowLeaderBoard,
+    HideLeaderBoard
 }

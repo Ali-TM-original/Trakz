@@ -414,3 +414,14 @@ a {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.menubtn {
+    margin: 10px;
+    background-color: #d2bd89;
+    border: 5px solid #d5b778;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

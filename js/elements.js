@@ -17,6 +17,7 @@ const context = canvas.getContext('2d');
 const tileOptions = document.querySelectorAll('.tile-option');
 const endGame = document.querySelector('#endgame');
 const newgamebtn = document.querySelector('#new-game-btn');
+const menubtn = document.querySelector('#menubtn');
 
 export {
     StartButton,
@@ -38,4 +39,5 @@ export {
     leaderboardbtn,
     endGame,
     newgamebtn,
+    menubtn
 }
