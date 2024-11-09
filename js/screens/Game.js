@@ -32,15 +32,15 @@ const tileImages = {
 
 
 // Set the source for each tile image
-tileImages[1].src = '/Trakz/assets/empty.svg';
-tileImages[2].src = '/Trakz/assets/bridge.svg';
-tileImages[3].src = '/Trakz/assets/mountain.svg';
-tileImages[4].src = '/Trakz/assets/oasis.svg';
-tileImages[5].src = '/Trakz/assets/bridge_rotated.svg'
-tileImages[6].src = '/Trakz/assets/straight_rail.svg'; // number 6 // rotated -> 61, 62, 63, 64
-tileImages[7].src = '/Trakz/assets/curve_rail.svg'; // number 7 // rotated -> 71, 72, 73 
-tileImages[8].src = '/Trakz/assets/mountain_rail.svg'; // number 8 // rotated -> 81, 82, 83
-tileImages[9].src = '/Trakz/pics/tiles/bridge_rail.png'; // number 9 // rotated -> 91, 92, 93
+tileImages[1].src = '../../Trakz/assets/empty.svg';
+tileImages[2].src = '../../Trakz/assets/bridge.svg';
+tileImages[3].src = '../../Trakz/assets/mountain.svg';
+tileImages[4].src = '../../Trakz/assets/oasis.svg';
+tileImages[5].src = '../../Trakz/assets/bridge_rotated.svg'
+tileImages[6].src = '../../Trakz/assets/straight_rail.svg'; // number 6 // rotated -> 61, 62, 63, 64
+tileImages[7].src = '../../Trakz/assets/curve_rail.svg'; // number 7 // rotated -> 71, 72, 73 
+tileImages[8].src = '../../Trakz/assets/mountain_rail.svg'; // number 8 // rotated -> 81, 82, 83
+tileImages[9].src = '../../Trakz/pics/tiles/bridge_rail.png'; // number 9 // rotated -> 91, 92, 93
 
 
 const loadImages = Promise.all(
