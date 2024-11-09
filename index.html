@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game with Splash Screen</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <div id="myNav" class="overlay">
+      <a id="helpclose" class="closebtn">&times;</a>
+      <div class="overlay-content">
+        <p>The Rules are simple and easy</p>
+        <p>Make sure all rail tracks are connected</p>
+        <p>Press R to rotate the track</p>
+        <p>Click to place the tack</p>
+        <p>Right Click to remove the track</p>
+      </div>
+    </div>
+
+    <!-- Splash screen container with the image -->
+    <div id="splash">
+      <img src="./assets/Thumbnail.svg" alt="Splash Screen Image" />
+    </div>
+
+    <div class="menu" id="menu">
+      <img src="./assets/title.svg" style="margin-top: 5px" />
+
+      <div class="input-container" style="width: 100%">
+        <input
+          type="text"
+          id="nameinput"
+          placeholder="Who are you?"
+          style="width: 100%"
+        />
+      </div>
+
+      <div class="control-panel" style="width: 100%">
+        <!-- Difficulty selection -->
+        <div class="difficulty" style="width: 100%">
+          <p class="difficulty-title">SET THE DIFFICULTY!</p>
+          <div style="display: flex; margin: 5px">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+              "
+            >
+              <button class="difficulty-btn selected" id="easybtn">
+                5 X 5
+              </button>
+              <span class="difficulty-label">EASY</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+              "
+            >
+              <button class="difficulty-btn" id="hardbtn">7 X 7</button>
+              <span class="difficulty-label">difficult</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Buttons -->
+        <div class="buttons">
+          <button class="rules-btn" id="rulebutton">RULES</button>
+          <button class="start-btn" id="startbutton">START GAME</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gamecontainer" style="display: none; padding: 10px">
+      <div class="info-panel">
+        <img
+          src="./assets/title.svg"
+          style="height: auto; width: 75%; margin-top: 20px"
+        />
+        <div
+          style="
+            color: black;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 5px solid #d5b778;
+            width: 100%;
+          "
+        >
+          <p class="heading-text">ROUTE DESIGNER:</p>
+          <p class="main-text" id="namecontainer">TRICKLES</p>
+          <!-- Have a small div with some width and height and margin from left right -->
+          <span
+            style="
+              background-color: #e2d2ac;
+              height: 2px;
+              width: 100%;
+              display: inline-block;
+            "
+          ></span>
+          <p class="heading-text">ELAPSED TIME:</p>
+          <p class="main-text" id="timer">10:25</p>
+        </div>
+
+        <div class="tile-selection-panel" id="tileselector">
+          <div class="tile-option selected-tile" id="tile1">
+            <img src="./assets/straight_rail.svg" alt="rail" />
+          </div>
+          <div class="tile-option" id="tile2">
+            <img src="./assets/curve_rail.svg" alt="rail" />
+          </div>
+          <div class="tile-option" id="tile3">
+            <img src="./assets/mountain_rail.svg" alt="rail" />
+          </div>
+          <!-- Fix Height and Width of this later try to find svg of this ask professor -->
+          <div class="tile-option" id="tile4">
+            <img src="./pics/tiles/bridge_rail.png" alt="rail" />
+          </div>
+        </div>
+      </div>
+      <canvas
+        id="game-canvas"
+        width="800"
+        height="800"
+        style="z-index: 5"
+      ></canvas>
+    </div>
+
+    <!-- Rail -->
+    <img
+      src="./assets/rail.svg"
+      style="
+        position: fixed;
+        bottom: 0;
+        object-fit: cover;
+        width: 100%;
+        margin-bottom: 15px;
+      "
+    />
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

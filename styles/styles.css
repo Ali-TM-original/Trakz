@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f8f8e8;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+#splash img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover for splash image */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    z-index: 5;
+    transition: .5s ease-out;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+
+}
+
+/* Input styling */
+.name-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1.1em;
+    border: 2px solid #d4a45d;
+    border-radius: 5px;
+    color: #a3a3a3;
+    text-align: left;
+}
+
+label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 2px solid #d4a45d;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: left;
+    transition: .1s ease;
+}
+
+input[type="text"]:focus {
+    outline: none !important;
+    border: 2px solid #d4a45d;
+    padding: 15px;
+}
+
+input:invalid {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(-5px) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateX(5px) rotate(3deg);
+    }
+
+    75% {
+        transform: translateX(-5px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+}
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+/* Difficulty section */
+.difficulty {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 3px solid #C8D0BC;
+    /* Adds a red border around the difficulty section */
+    padding: 10px;
+    /* Adds some padding to make the content inside look nicer */
+    border-radius: 15px;
+    /* Optional: adds rounded corners */
+}
+
+.difficulty-title {
+    font-size: 1.2em;
+    color: #C8D0BC;
+    font-weight: 600;
+}
+
+.difficulty-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.difficulty-btn {
+    width: 100px;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 3px solid #b6c0a4;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: #b5bfa4;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.selected {
+    color: #5a5d6d;
+    background-color: #eaeed3;
+}
+
+.difficulty-label {
+    font-size: 0.9em;
+    color: #a3a3a3;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+/* Buttons styling */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rules-btn,
+.start-btn {
+    width: 140px;
+    padding: 17px;
+    font-size: 1.1em;
+    border: 3px solid #919096;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #e7e8e8;
+    font-weight: bold;
+    background-color: #a4a4ac;
+}
+
+.rules-btn {
+    background-color: #EAEFD3;
+    border-color: #b5c0a4;
+    color: #50525f;
+}
+
+.start-btn {
+    background-color: #8f8f8f;
+    border-color: #8f8f8f;
+}
+
+.rules-btn:hover {
+    background-color: #909f90;
+}
+
+.start-btn:hover {
+    background-color: #7a7a7a;
+}
+
+/* Wrapper for consistent spacing */
+.wrapper {
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 25px;
+    text-align: center;
+}
+
+#game-canvas {
+    border: 12px solid #8B5E3B;
+    background-color: #F4EDE3;
+    border-radius: 10px;
+}
+
+.main-text {
+    color: black;
+    font-size: 25px;
+    font-weight: bolder
+}
+
+.heading-text {
+    color: #505069;
+    font-size: 25px;
+    font-weight: 700
+}
+
+/* Overlay for rules */
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay p,
+a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    cursor: pointer;
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* Container for the tile selection panel */
+.tile-selection-panel {
+    padding: 20px;
+    margin-top: 5px;
+    /* Padding inside the container */
+    background-color: #f2e7c8;
+    border: 2px solid #b29a5d;
+    border-radius: 8px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.tile-option {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-tile {
+    background-color: #d4c28e;
+    border: 5px solid #b29a5d;
+    transition: transform 0.3s ease;
+}
+
+.tile-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.rotated {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+    /* Optional smooth transition */
+}
+
+.rotatedtwice {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    /* Optional smooth transition */
+}
+
+.rotatedthrice {
+    transform: rotate(270deg);
+    transition: transform 0.3s ease;
+    /* Optional smooth transition */
+}
