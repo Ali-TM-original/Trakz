@@ -340,3 +340,77 @@ a {
     transition: transform 0.3s ease;
     /* Optional smooth transition */
 }
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 30rem;
+    height: max-content;
+    background-color: #eaeed3;
+    border-radius: 1rem;
+    border: 5px solid #d4b87b;
+    box-shadow: 10px 5px 5px #979797;
+}
+
+.card h3 {
+    font-size: 2rem;
+    padding-top: .5rem;
+}
+
+
+
+
+.leaderboard-inner {
+    width: 25rem;
+    padding-left: 1rem;
+}
+
+.leaderboard-inner ol li {
+    border: 2px solid #d4b87b;
+    padding: .8rem;
+    margin: .8rem;
+    border-radius: .5rem;
+    list-style-position: inside;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+}
+
+.endgame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    opacity: 0;
+    transition: 1s ease-in;
+}
+
+.endgame-content {
+    background-color: #eaeed3;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.overlay-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #d2bd89;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

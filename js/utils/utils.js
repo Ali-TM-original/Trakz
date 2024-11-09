@@ -1,3 +1,5 @@
+import { leaderboardlist, endGame, leaderBoard } from "../elements.js";
+
 function checkArrays(array1, array2) {
     for (let i = 0; i < array1.length; i++) {
         for (let j = 0; j < array1[i].length; j++) {
@@ -94,7 +96,46 @@ function isConnected(arr) {
     return true;
 }
 
+const addLeaderboardItem = (newItem) => {
+    // Create a new list item
+    const newListItem = document.createElement('li');
+    newListItem.textContent = newItem;
+    // Append the new item to the leaderboard list
+    leaderboardlist.appendChild(newListItem);
+
+}
+
+const ShowLeaderBoard = () => {
+    HideGameOverScreen();
+    leaderBoard.style.display = 'flex';
+    leaderboardlist.innerHTML = '';
+    const allKeys = Object.keys(localStorage);
+    const allItems = [];
+
+    allKeys.forEach(key => {
+        allItems.push(key)
+    });
+
+    for (const key in allItems) {
+        addLeaderboardItem(`${allItems[key]}  ${localStorage.getItem(allItems[key]).replace(/"/g, '')}s`)
+    }
+}
+
+const ShowGameOverScreen = () => {
+    endGame.style.display = "flex";
+    endGame.style.opacity = "1";
+}
+
+function HideGameOverScreen() {
+    endGame.style.opacity = "0";
+    endGame.style.display = "none";
+}
+
 export {
     checkArrays,
-    isConnected
+    isConnected,
+    addLeaderboardItem,
+    ShowGameOverScreen,
+    HideGameOverScreen,
+    ShowLeaderBoard,
 }

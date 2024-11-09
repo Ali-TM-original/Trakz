@@ -1,5 +1,5 @@
-import { canvas, context, namecontainer, timer, tileOptions } from "../elements.js";
-import { isConnected, checkArrays } from "../utils/utils.js";
+import { canvas, context, namecontainer, timer, tileOptions, leaderboardbtn, gameContainer, newgamebtn, MenuContainer } from "../elements.js";
+import { isConnected, checkArrays, ShowGameOverScreen, ShowLeaderBoard, HideGameOverScreen } from "../utils/utils.js";
 
 
 window.onload = () => {
@@ -7,6 +7,8 @@ window.onload = () => {
 }
 
 let DefaultMap;
+let loaded = false;
+let pname;
 let gameMap = [[]];
 let SelectedTile = 1;
 let rotationSteps = 0; // Cycle through 0, 1, 2, 3
@@ -30,15 +32,15 @@ const tileImages = {
 
 
 // Set the source for each tile image
-tileImages[1].src = '../../assets/empty.svg';
-tileImages[2].src = '../../assets/bridge.svg';
-tileImages[3].src = '../../assets/mountain.svg';
-tileImages[4].src = '../../assets/oasis.svg';
-tileImages[5].src = '../../assets/bridge_rotated.svg'
-tileImages[6].src = '../../assets/straight_rail.svg'; // number 6 // rotated -> 61, 62, 63, 64
-tileImages[7].src = '../../assets/curve_rail.svg'; // number 7 // rotated -> 71, 72, 73 
-tileImages[8].src = '../../assets/mountain_rail.svg'; // number 8 // rotated -> 81, 82, 83
-tileImages[9].src = '../../pics/tiles/bridge_rail.png'; // number 9 // rotated -> 91, 92, 93
+tileImages[1].src = '/assets/empty.svg';
+tileImages[2].src = '/assets/bridge.svg';
+tileImages[3].src = '/assets/mountain.svg';
+tileImages[4].src = '/assets/oasis.svg';
+tileImages[5].src = '/assets/bridge_rotated.svg'
+tileImages[6].src = '/assets/straight_rail.svg'; // number 6 // rotated -> 61, 62, 63, 64
+tileImages[7].src = '/assets/curve_rail.svg'; // number 7 // rotated -> 71, 72, 73 
+tileImages[8].src = '/assets/mountain_rail.svg'; // number 8 // rotated -> 81, 82, 83
+tileImages[9].src = '/pics/tiles/bridge_rail.png'; // number 9 // rotated -> 91, 92, 93
 
 
 const loadImages = Promise.all(
@@ -226,11 +228,6 @@ const EnsureRailPlaement = (row, col) => {
     return true;
 }
 
-const CheckEnd = () => {
-
-
-
-}
 
 canvas.addEventListener('click', (event) => {
     let tile = 5 + SelectedTile;
@@ -297,7 +294,8 @@ canvas.addEventListener('click', (event) => {
     if (checkArrays(gameMap, DefaultMap)) {
         if (isConnected(gameMap)) {
             clearInterval(intervalId);
-            console.log("You Won The Game")
+            localStorage.setItem(pname, JSON.stringify(timer.textContent));
+            ShowGameOverScreen();
         }
     };
 });
@@ -341,6 +339,19 @@ window.addEventListener('keydown', (event) => {
 
 });
 
+leaderboardbtn.addEventListener('click', e => {
+    e.preventDefault();
+    gameContainer.style.display = 'none';
+    ShowLeaderBoard();
+})
+
+newgamebtn.addEventListener('click', e => {
+    e.preventDefault();
+    gameContainer.style.display = 'none';
+    MenuContainer.style.display = 'flex';
+    HideGameOverScreen();
+})
+
 // Tile Selection Mechanism
 tileOptions.forEach((tile) => {
     tile.addEventListener('click', () => {
@@ -377,13 +388,19 @@ function startTimer() {
 
 
 const StartGame = (playername, map) => {
+    pname = playername;
     context.imageSmoothingEnabled = false;
     DefaultMap = map.map(row => [...row]); // To Store initial state
     gameMap = map;
     namecontainer.innerText = playername;
-    loadImages.then(() => {
-        drawMap(context, map);
-    });
+    if (loaded) {
+        drawMap(context, map)
+    } else {
+        loadImages.then(() => {
+            loaded = true;
+            drawMap(context, map);
+        });
+    }
     intervalId = startTimer();
 }
 
