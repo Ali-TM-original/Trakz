@@ -2,6 +2,8 @@ Shahzaib Ali
 D946BF
 Web Programming - Assessment
 
+![showcase](./assets/preview/railwaycollage.jpg)
+
 Minimum requirements (8 points)
 
   - [x] Mandatory: The readme file provided in the initial submission is properly filled out (Declaration, completed points) (0 points)
