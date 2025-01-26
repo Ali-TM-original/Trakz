@@ -1,13 +1,6 @@
 Shahzaib Ali
 D946BF
 Web Programming - Assessment
-This solution was submitted and created by the student mentioned above for the Web Programming course assessment.
-I declare that this solution is my own work. I have not copied or used solutions from third parties.
-I have not forwarded my solution to fellow students, and I have not made it public.
-The Student Requirements System of Eötvös Loránd University
-(ELTE Organizational and Operational Regulations, Vol. II, §74/C) states that as long as a student presents
-the work of another student - or at least a significant part of it - as their own, it is considered a disciplinary offense.
-The most severe consequence of such an offense is the student's expulsion from the university.
 
 Minimum requirements (8 points)
 
